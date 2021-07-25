@@ -1,9 +1,23 @@
 .main-header-container{
-    /* background-color: brown; */
+    background-color: white;
     height: 10vh;
+    min-height: 4em;
     position: sticky;
     top: 0px;
     box-shadow: 0px 0px 5px gray;
     padding-left: 10%;
     padding-right: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rav-logo-container{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.rav-logo{
+    height: 50%;
 }
