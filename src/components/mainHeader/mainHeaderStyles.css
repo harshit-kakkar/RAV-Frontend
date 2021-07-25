@@ -1,0 +1,9 @@
+.main-header-container{
+    /* background-color: brown; */
+    height: 10vh;
+    position: sticky;
+    top: 0px;
+    box-shadow: 0px 0px 5px gray;
+    padding-left: 10%;
+    padding-right: 10%;
+}
