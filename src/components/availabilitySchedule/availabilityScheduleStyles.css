@@ -1,0 +1,24 @@
+.availability-schedule-container{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+}
+
+.availability-schedule-day-label{
+    width: 3em;
+}
+
+.time-select{
+    padding: 0.2em;
+    width: 40%;
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+}
+
+.time-select-container{
+    margin-left: 1em;
+    width: 100%;
+}
