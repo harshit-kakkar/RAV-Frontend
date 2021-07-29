@@ -1,0 +1,9 @@
+.job-detail-container{
+    margin-bottom: 3.5em;
+}
+
+.job-role,
+.job-company-name
+{
+    color: #0057D2;
+}

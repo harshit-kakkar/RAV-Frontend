@@ -5,7 +5,9 @@
     width: 100%;
 }
 
-.profile-base-container{
+.profile-base-container,
+.profile-experience-container
+{
     /* background-color: lightpink; */
     box-shadow: 0px 2px 5px -5px rgb(0, 0, 0);
 }
@@ -17,7 +19,8 @@
 
 .profile-picture-container, 
 .intro-label,
-.profile-domain-label
+.profile-domain-label,
+.profile-experience-label
 {
     flex-basis: 20%;
     flex-shrink: 0;
@@ -51,7 +54,8 @@
 }
 
 .intro-container,
-.profile-domain-container
+.profile-domain-container,
+.profile-experience-container
 {
     display: flex;
     flex-direction: row;
@@ -66,6 +70,12 @@
     line-height: 1.6;
 }
 
-.profile-domain-para{
+.profile-domain-para,
+.experience-job-container
+{
     margin-left: 2em;
+}
+
+.profile-experience-container{
+    padding-top: 1em;
 }

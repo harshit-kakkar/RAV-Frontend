@@ -1,17 +1,36 @@
 import React from 'react';
 import './profileStyles.css'
+import JobDetail from '../jobDetail/jobDetail';
 
 function Profile() {
+
+    //Mock data
     let intro = `I have extensively worked with backend technologies.I have extensively worked with backend technologies.
     I have extensively worked with backend technologies.I have extensively worked with backend technologies.
     `
     let name = "HARSHIT KAKKAR"
     let email = "kharshit0@gmail.com"
     let domain = "Backend"
+    let exp = [
+        {
+            "company_name": "Amazon",
+            "role": "Software Engineer",
+            "start_date": "2018-11-01",
+            "end_date": "2020-04-01"
+        },
+        {
+            "company_name": "Amazon",
+            "role": "Software Engineer",
+            "start_date": "2018-11-01",
+            "end_date": "2020-04-01"
+        }
+    ]
 
 
   return (
     <div className="profile-container">
+
+
       <div className="profile-base-container">
           <div className="basic-details-container">
               <div className="profile-picture-container">
@@ -36,8 +55,13 @@ function Profile() {
 
 
 
-      <div className="experience-container">
-          Experience
+      <div className="profile-experience-container">
+          <div className="profile-experience-label">
+            <p>Experience</p>
+          </div>
+          <div className="experience-job-container">
+              {exp.map((job) => <JobDetail job={job}/>)}
+          </div>
       </div>
     </div>
   );
