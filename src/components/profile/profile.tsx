@@ -2,7 +2,9 @@ import React from 'react';
 import './profileStyles.css'
 
 function Profile() {
-    let intro = "I have extensively worked with backend technologies."
+    let intro = `I have extensively worked with backend technologies.I have extensively worked with backend technologies.
+    I have extensively worked with backend technologies.I have extensively worked with backend technologies.
+    `
     let name = "HARSHIT KAKKAR"
     let email = "kharshit0@gmail.com"
     let domain = "Backend"
@@ -21,13 +23,13 @@ function Profile() {
               </div>
           </div>
           <div className="intro-details-container">
-              <div>
-                  <label>Intro</label>
-                  <p>{intro}</p>
+              <div className="intro-container">
+                  <p className="intro-label">Introduction</p>
+                  <p className="intro-para">{intro}</p>
               </div>
-              <div>
-                  <label>Domain</label>
-                  <p>{domain}</p>
+              <div className="profile-domain-container">
+                  <p className="profile-domain-label">Domain</p>
+                  <p className="profile-domain-para">{domain}</p>
               </div>
           </div>
       </div>
