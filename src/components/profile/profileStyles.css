@@ -1,0 +1,35 @@
+.profile-container{
+    /* background-color: lightgreen; */
+    margin-top: 4em;
+}
+
+/* .profile-base-container{
+    background-color: lightpink;
+} */
+
+.basic-details-container{
+    /* background-color: lightseagreen; */
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-picture-container{
+    flex-basis: 20%;
+}
+
+.profile-picture{
+    background-color: lightslategray;
+    height: 12em;
+    width: 12em;
+    border: black 1px solid;
+    border-radius: 0.5em;
+}
+
+.basic-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 2em;
+    margin-left: 2em;
+    font-size: 1.2em;
+}
