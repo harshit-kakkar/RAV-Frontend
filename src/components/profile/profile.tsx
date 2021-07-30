@@ -1,6 +1,7 @@
 import React from 'react';
 import './profileStyles.css'
 import JobDetail from '../jobDetail/jobDetail';
+import AvailabilitySchedule from '../availabilitySchedule/availabilitySchedule';
 
 function Profile() {
 
@@ -63,6 +64,16 @@ function Profile() {
               {exp.map((job) => <JobDetail job={job}/>)}
           </div>
       </div>
+
+      <div className="profile-availability-schedule-container">
+          <div className="profile-availability-schedule-label">
+            <p>Availability Schedule</p>
+          </div>
+          <div className="user-availability-schedule disable-pointer">
+              <AvailabilitySchedule />
+          </div>
+      </div>
+
     </div>
   );
 }

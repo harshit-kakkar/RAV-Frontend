@@ -20,7 +20,8 @@
 .profile-picture-container, 
 .intro-label,
 .profile-domain-label,
-.profile-experience-label
+.profile-experience-label,
+.profile-availability-schedule-label
 {
     flex-basis: 20%;
     flex-shrink: 0;
@@ -55,7 +56,8 @@
 
 .intro-container,
 .profile-domain-container,
-.profile-experience-container
+.profile-experience-container,
+.profile-availability-schedule-container
 {
     display: flex;
     flex-direction: row;
@@ -71,11 +73,18 @@
 }
 
 .profile-domain-para,
-.experience-job-container
+.experience-job-container,
+.user-availability-schedule
 {
     margin-left: 2em;
 }
 
-.profile-experience-container{
+.profile-experience-container,
+.profile-availability-schedule-container
+{
     padding-top: 1em;
+}
+
+.disable-pointer{
+    pointer-events: none;
 }
