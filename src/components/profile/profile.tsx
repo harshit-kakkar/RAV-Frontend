@@ -27,6 +27,18 @@ function Profile() {
         }
     ]
 
+    let schedule = {
+        "MON" : {
+            "startTime": 19,
+            "endTime": 23
+        },
+        "TUE" : {
+            "startTime": 21,
+            "endTime": 22
+        }
+    
+    }
+
 
   return (
     <div className="profile-container">
@@ -70,7 +82,7 @@ function Profile() {
             <p>Availability Schedule</p>
           </div>
           <div className="user-availability-schedule disable-pointer">
-              <AvailabilitySchedule />
+              <AvailabilitySchedule schedule={schedule} />
           </div>
       </div>
 

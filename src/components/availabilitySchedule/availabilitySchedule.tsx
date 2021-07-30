@@ -1,8 +1,43 @@
 import React from 'react';
 import './availabilityScheduleStyles.css'
 
-function AvailabilitySchedule (){
-  let days: Array<String> = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
+interface AvailabilityScheduleModel {
+  schedule?: {
+    [day : string] : {
+      startTime:number,
+      endTime:number
+    }
+  }
+}
+
+function AvailabilitySchedule (props:AvailabilityScheduleModel){
+  let days: Array<string> = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
+  return (
+<>
+    {days.map((day: string, index: number) => 
+      
+      
+
+    <div className="availability-schedule-container">
+        <label className="availability-schedule-day-label">{day}</label>
+        <input type="checkbox" className="availability-schedule-checkbox" defaultChecked={props.schedule?props.schedule[day]?true:false:false}></input>
+        <div className="time-select-container">
+          <select className="time-select">
+            {props.schedule?props.schedule[day]?getTimeSelectOptions(props.schedule[day]["startTime"]):getTimeSelectOptions():getTimeSelectOptions()}
+          </select>
+          <span> to </span>
+          <select className="time-select">
+            {props.schedule?props.schedule[day]?getTimeSelectOptions(props.schedule[day]["endTime"]):getTimeSelectOptions():getTimeSelectOptions()}
+          </select>
+        </div>
+    </div>
+
+    )}
+</>
+  );
+}
+
+function getTimeSelectOptions(defaultTime:number = -1){
   let timeSelectOptions: Array<any> = [];
   for(let i=0; i<=23; i++){
     let formattedTime: string = "";
@@ -13,31 +48,15 @@ function AvailabilitySchedule (){
       formattedTime = i.toString();
     }
     formattedTime += ":00";
-    timeSelectOptions.push(<option>{formattedTime}</option>)
+    if(defaultTime === i){
+      timeSelectOptions.push(<option selected>{formattedTime}</option>)
+    }
+    else{
+      timeSelectOptions.push(<option>{formattedTime}</option>)
+    }
+    
   }
-  return (
-<>
-    {days.map((day: String, index: number) => 
-      
-      
-
-    <div className="availability-schedule-container">
-        <label className="availability-schedule-day-label">{day}</label>
-        <input type="checkbox" className="availability-schedule-checkbox"></input>
-        <div className="time-select-container">
-          <select className="time-select">
-            {timeSelectOptions}
-          </select>
-          <span> to </span>
-          <select className="time-select">
-            {timeSelectOptions}
-          </select>
-        </div>
-    </div>
-
-    )}
-</>
-  );
+  return timeSelectOptions
 }
 
 export default AvailabilitySchedule;
