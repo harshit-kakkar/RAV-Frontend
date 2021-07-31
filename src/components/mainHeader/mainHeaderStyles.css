@@ -21,3 +21,16 @@
 .rav-logo{
     height: 50%;
 }
+
+.main-navigation-container{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.main-navigation-list{
+    width: 50%;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}

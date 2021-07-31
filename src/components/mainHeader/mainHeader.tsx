@@ -3,6 +3,7 @@ import './mainHeaderStyles.css';
 import ravLogo from '../../assets/rav-logo2.png'
 import {RootState} from '../../reducers/index'
 import {useSelector} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 function MainHeader() {
   const isLoggedIn = useSelector((state: RootState) => state.isLoggedIn)
@@ -13,9 +14,13 @@ function MainHeader() {
       </div>
       {
         isLoggedIn? 
-          <div>
-            nav
-          </div>
+          <nav className="main-navigation-container">
+            <ul className="main-navigation-list">
+              <li>Events</li>
+              <li>Search</li>
+              <Link to='/profile'><li>Profile</li></Link>
+            </ul>
+          </nav>
           : 
           <></>
       }
