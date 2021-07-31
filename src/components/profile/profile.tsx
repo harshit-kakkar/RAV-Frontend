@@ -12,7 +12,13 @@ function Profile() {
     let name = "HARSHIT KAKKAR"
     let email = "kharshit0@gmail.com"
     let domain = "Backend"
-    let exp = [
+    interface jobDetailModel{
+        company_name: string, 
+        role: string,
+        start_date: string,
+        end_date: string
+    }
+    let exp: Array<jobDetailModel> = [
         {
             "company_name": "Amazon",
             "role": "Software Engineer",
@@ -73,18 +79,21 @@ function Profile() {
             <p>Experience</p>
           </div>
           <div className="experience-job-container">
-              {exp.map((job) => <JobDetail job={job}/>)}
+              {exp.length>0?exp.map((job, i) => <JobDetail key={i} job={job}/>):<p><i> No job experience provided</i></p>}
           </div>
       </div>
 
+
+        {Object.keys(schedule).length === 0? <></>:
       <div className="profile-availability-schedule-container">
           <div className="profile-availability-schedule-label">
             <p>Availability Schedule</p>
           </div>
           <div className="user-availability-schedule disable-pointer">
-              <AvailabilitySchedule schedule={schedule} />
+              <AvailabilitySchedule key={1} schedule={schedule} />
           </div>
       </div>
+        }
 
     </div>
   );

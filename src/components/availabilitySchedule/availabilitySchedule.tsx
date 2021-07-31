@@ -18,7 +18,7 @@ function AvailabilitySchedule (props:AvailabilityScheduleModel){
       
       
 
-    <div className="availability-schedule-container">
+    <div className="availability-schedule-container" key={index}>
         <label className="availability-schedule-day-label">{day}</label>
         <input type="checkbox" className="availability-schedule-checkbox" defaultChecked={props.schedule?props.schedule[day]?true:false:false}></input>
         <div className="time-select-container">
@@ -49,10 +49,10 @@ function getTimeSelectOptions(defaultTime:number = -1){
     }
     formattedTime += ":00";
     if(defaultTime === i){
-      timeSelectOptions.push(<option selected>{formattedTime}</option>)
+      timeSelectOptions.push(<option key={i} selected>{formattedTime}</option>)
     }
     else{
-      timeSelectOptions.push(<option>{formattedTime}</option>)
+      timeSelectOptions.push(<option key={i}>{formattedTime}</option>)
     }
     
   }
