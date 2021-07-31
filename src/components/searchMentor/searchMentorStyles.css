@@ -1,0 +1,33 @@
+.search-mentor-container{
+    padding-top: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-operation-container{
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.search-domain-select-container{
+    display: flex;
+    align-items: center;
+    
+}
+
+.search-mentor-domain-select{
+    margin-left: 1em;
+    height: 80%;
+}
+
+.search-mentor-profile-cards-container{
+    width: 100%;
+    max-width: 60em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 5em;
+}
