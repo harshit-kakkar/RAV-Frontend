@@ -1,6 +1,6 @@
 .profile-card-container{
     border: solid black 2px;
-    max-width: 10em;
+    max-width: 12em;
     display: flex;
     flex-direction: column;
     border-radius: 0.4em;
@@ -20,7 +20,7 @@
 .profile-card-picture{
     background-color: rgb(148, 149, 150);
     height: 4em;
-    width: 5em;
+    width: 6em;
     
 }
 

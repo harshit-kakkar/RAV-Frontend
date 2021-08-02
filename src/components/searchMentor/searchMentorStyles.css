@@ -25,7 +25,7 @@
 
 .search-mentor-profile-cards-container{
     width: 100%;
-    max-width: 60em;
+    max-width: 65em;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
