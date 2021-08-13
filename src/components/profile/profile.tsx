@@ -7,6 +7,20 @@ import { RootState } from '../../reducers';
 import {useSelector} from 'react-redux'
 import { useHistory } from 'react-router-dom';
 
+interface scheduleModel{
+    "id": string,
+    "startTimeHour": number,
+    "endTimeHour": number,
+    "day": string
+}
+
+interface jobDetailModel{
+    company_name: string, 
+    role: string,
+    start_date: string,
+    end_date: string
+}
+
 function Profile() {
 
     const history = useHistory();
@@ -19,7 +33,6 @@ function Profile() {
     const [schedule, setSchedule] = useState({});
 
     useEffect(() => {
-        console.log(jwtToken)
         fetch('http://localhost:8080/profile', {
             headers: {
                 'Authorization': 'Bearer ' + jwtToken,
@@ -36,12 +49,7 @@ function Profile() {
         .catch((err) => console.log(err))
     }, [])
 
-    interface scheduleModel{
-        "id": string,
-        "startTimeHour": number,
-        "endTimeHour": number,
-        "day": string
-    }
+
 
     function modifyScheduleFormat(scheduleList: Array<scheduleModel>) {
         let modifiedScheduleFormat: any = {};
@@ -69,12 +77,6 @@ function Profile() {
     let intro = `I have extensively worked with backend technologies.I have extensively worked with backend technologies.
     I have extensively worked with backend technologies.I have extensively worked with backend technologies.
     `
-    interface jobDetailModel{
-        company_name: string, 
-        role: string,
-        start_date: string,
-        end_date: string
-    }
     let exp: Array<jobDetailModel> = [
         {
             "company_name": "Amazon",

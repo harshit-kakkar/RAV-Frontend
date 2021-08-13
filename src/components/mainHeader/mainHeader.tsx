@@ -17,7 +17,7 @@ function MainHeader() {
           <nav className="main-navigation-container">
             <ul className="main-navigation-list">
               <li>Events</li>
-              <li>Search</li>
+              <Link to="/search"><li>Search</li></Link>
               <Link to='/profile'><li>Profile</li></Link>
             </ul>
           </nav>

@@ -1,76 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SearchProfileCard from '../searchProfileCard/searchProfileCard';
 import './searchMentorStyles.css'
 
-function SearchMentor() {
-    interface profileCardModel{
-        id:number,
-        name: string,
-        domain: string
-    }
-    let searchResult: Array<profileCardModel> = [
-        {
-            "id": 1,
-            "name": "Mohit Kakkar",
-            "domain": "Backend"
-        },
-        {
-            "id": 2,
-            "name": "Mohit Kakkar",
-            "domain": "Backend"
-        },
-        {
-            "id": 3,
-            "name": "Mohit Kakkar",
-            "domain": "Backend"
-        },
-        {
-            "id": 4,
-            "name": "Mohit Kakkar",
-            "domain": "Backend"
-        },
-        {
-            "id": 5,
-            "name": "Mohit Kakkar",
-            "domain": "Backend"
-        },
-        {
-            "id": 6,
-            "name": "Mohit Kakkar",
-            "domain": "Backend"
-        },
-        {
-            "id": 7,
-            "name": "Mohit Kakkar",
-            "domain": "Backend"
-        },
-        {
-            "id": 8,
-            "name": "Mohit Kakkar",
-            "domain": "Backend"
-        }
+import { RootState } from '../../reducers';
+import {useSelector} from 'react-redux'
+import {useHistory} from 'react-router-dom'
 
-    ]
+interface profileCardModel{
+    id:number,
+    name: string,
+    domain: string
+}
+
+function SearchMentor() {
+    const history = useHistory();
+
+    const jwtToken = useSelector((state: RootState) => state.jwtToken)
+
+    const [selectedDomain, setSelectedDomain] = useState('Backend');
+    const [searchResult, setSearchResult] = useState([]);
+
+    async function searchUsers() {
+        let searchResponse = await fetch('http://localhost:8080/search?domain='+selectedDomain, {
+            headers: {
+                'Authorization': 'Bearer ' + jwtToken,
+              }
+        })
+        if (searchResponse.status === 200){
+            let searchResponseJson = await searchResponse.json();
+            setSearchResult(searchResponseJson);
+        }else if(searchResponse.status === 403){
+            history.push("/login")
+        }
+    }
+
   return (
     <div className="search-mentor-container">
       <div className="search-operation-container">
           <div className="search-domain-select-container">
           <p>Select a domain </p>
-            <select className="search-mentor-domain-select">
+            <select className="search-mentor-domain-select" value={selectedDomain} onChange={(e) => setSelectedDomain(e.target.value)}>
                 <option value="Backend">Backend</option>
-                <option value="Backend">Backend</option>
+                <option value="Frontend">Frontend</option>
                 <option value="Full Stack">Full Stack</option>
                 <option value="Mobile App Development">Mobile App Development</option>
             </select>
             </div>
-            <button>Search</button>
+            <button onClick={() => searchUsers()}>Search</button>
       </div>
 
 
       <div className="search-mentor-profile-cards-container">
         {
             searchResult.length>0? 
-                searchResult.map((profile) => <SearchProfileCard key={profile.id} {...profile}/>) 
+                searchResult.map((profile) => <SearchProfileCard key={profile["id"]} {...profile}/>) 
                 : 
                 <></>
         }
