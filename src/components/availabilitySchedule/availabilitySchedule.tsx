@@ -7,7 +7,8 @@ interface AvailabilityScheduleModel {
       startTime:number,
       endTime:number
     }
-  }
+  },
+  setSchedule?: Function
 }
 
 function AvailabilitySchedule (props:AvailabilityScheduleModel){
