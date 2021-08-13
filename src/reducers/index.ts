@@ -7,7 +7,7 @@ import setJwtTokenReducer from "./jwtToken";
 export const rootReducer = combineReducers({
     isLoggedIn: isLoggedInReducer,
     isMentorSignup: isMentorSignupReducer,
-    setJwtToken: setJwtTokenReducer,
+    jwtToken: setJwtTokenReducer,
 })
 
 export type RootState = ReturnType<typeof rootReducer>

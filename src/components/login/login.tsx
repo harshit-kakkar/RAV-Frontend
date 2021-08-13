@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import './loginStyles.css'
 
 import {useDispatch, useSelector} from 'react-redux'
+import { useHistory } from 'react-router-dom';
 import {RootState} from '../../reducers'
 import {login as IsLoggedInAction} from '../../actions/LoginActions'
 import {setJwtToken as setJwtTokenAction} from '../../actions/jwtTokenActions'
 
 
 function Login() {
+  const history = useHistory();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -33,6 +35,7 @@ function Login() {
       let jwtToken = await loginResponse.json()
       let token:String = jwtToken["token"]
       dispatch(setJwtTokenAction(token))
+      history.push("/profile")
 
     }else{
       console.log("Incorrect Username/password")

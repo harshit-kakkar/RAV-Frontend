@@ -1,17 +1,74 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './profileStyles.css'
 import JobDetail from '../jobDetail/jobDetail';
 import AvailabilitySchedule from '../availabilitySchedule/availabilitySchedule';
 
+import { RootState } from '../../reducers';
+import {useSelector} from 'react-redux'
+import { useHistory } from 'react-router-dom';
+
 function Profile() {
+
+    const history = useHistory();
+
+    const jwtToken = useSelector((state: RootState) => state.jwtToken)
+
+    const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
+    const [domain, setDomain] = useState('');
+    const [schedule, setSchedule] = useState({});
+
+    useEffect(() => {
+        console.log(jwtToken)
+        fetch('http://localhost:8080/profile', {
+            headers: {
+                'Authorization': 'Bearer ' + jwtToken,
+              }
+        })
+        .then((profileResponse) => {
+                if(profileResponse.status === 200){
+                    setProfileDetails(profileResponse)
+                }else{
+                    history.push("/login");
+                }
+            }
+        )
+        .catch((err) => console.log(err))
+    }, [])
+
+    interface scheduleModel{
+        "id": string,
+        "startTimeHour": number,
+        "endTimeHour": number,
+        "day": string
+    }
+
+    function modifyScheduleFormat(scheduleList: Array<scheduleModel>) {
+        let modifiedScheduleFormat: any = {};
+        for(let i=0; i<scheduleList.length; i++){
+            let schedule = scheduleList[i];
+            modifiedScheduleFormat[schedule["day"]] = {
+                "startTime": schedule["startTimeHour"],
+                "endTime": schedule["endTimeHour"]
+            }
+        }
+        return modifiedScheduleFormat;
+    }
+
+    async function setProfileDetails(profileResponse: any){
+        let profileJsonBody = await profileResponse.json();
+        setEmail(profileJsonBody["email"]);
+        setName(profileJsonBody["name"]);
+        if(profileJsonBody["domain"]){
+            setDomain(profileJsonBody["domain"]);
+        }
+        setSchedule(modifyScheduleFormat(profileJsonBody["schedule"]));
+    }
 
     //Mock data
     let intro = `I have extensively worked with backend technologies.I have extensively worked with backend technologies.
     I have extensively worked with backend technologies.I have extensively worked with backend technologies.
     `
-    let name = "HARSHIT KAKKAR"
-    let email = "kharshit0@gmail.com"
-    let domain = "Backend"
     interface jobDetailModel{
         company_name: string, 
         role: string,
@@ -32,18 +89,6 @@ function Profile() {
             "end_date": "2020-04-01"
         }
     ]
-
-    let schedule = {
-        "MON" : {
-            "startTime": 19,
-            "endTime": 23
-        },
-        "TUE" : {
-            "startTime": 21,
-            "endTime": 22
-        }
-    
-    }
 
 
   return (
