@@ -52,3 +52,19 @@
     margin-left: 1em;
     margin-right: 1em;
 }
+
+.signup-success-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-success-redirection-msg{
+    font-size: 1.2em;
+}
+.signup-success-login-link{
+    color: #0057D2;
+    font-family: 'Times New Roman', Times, serif;
+    
+}

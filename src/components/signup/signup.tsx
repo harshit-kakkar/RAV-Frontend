@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./signupStyles.css"
 import {RootState} from '../../reducers'
 import {useSelector} from 'react-redux'
 // import {isMentorSignup} from '../../actions/IsMentorSignupActions'
 import MentorSignup from '../mentorSignup/mentorSignup';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 function Signup() {
   const history = useHistory();
@@ -15,6 +15,22 @@ function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [domain, setDomain] = useState('');
+
+  const [signupStatus, setSignupStatus] = useState(false);
+  const [loginRedirectTimer, setLoginRedirectTimer] = useState(-1);
+
+  useEffect(() => {
+    setInterval(function(){
+      let remainingLoginRedirectTimer:number = loginRedirectTimer-1;
+      if(remainingLoginRedirectTimer === 0){
+        history.push("/login")
+      }
+      else if(remainingLoginRedirectTimer>0){
+        setLoginRedirectTimer(remainingLoginRedirectTimer)
+      }
+    },1000)
+    return function cleanup() {}
+  }, [loginRedirectTimer])
 
   async function sendSignupRequest(){
    let signupScheduleRequestFormat:any = [] 
@@ -39,7 +55,6 @@ function Signup() {
       "schedule": signupScheduleRequestFormat
     }
 
-    console.log(signupRequestData)
     let signupResponse = await fetch('http://localhost:8080/signup', { 
       method: 'POST',
       headers: {
@@ -49,14 +64,16 @@ function Signup() {
     })
 
     if(signupResponse.status === 200){
-      history.push("/login")
+      setSignupStatus(true)
+      setLoginRedirectTimer(4);
     }
   } 
 
   return (
     <div className="signup-container">
       <h1 className="signup-header">Welcome to RAV</h1>
-      <form className="signup-form-container">
+      {!signupStatus?
+        <form className="signup-form-container">
           <input 
             required 
             className="signup-input" 
@@ -89,7 +106,18 @@ function Signup() {
           {isMentorSignupState?<MentorSignup setDomain={setDomain} />: <div></div>}
 
           <button type="button" className="signup-button" onClick={() => sendSignupRequest()}>Sign up</button>
-      </form>
+        </form>
+
+      :
+
+        <div className="signup-success-div">
+          <h2>Congratulations! Your account has been created successfully.</h2>
+          <p className="signup-success-redirection-msg">
+            (You will redirected to <Link to="/login"><span className="signup-success-login-link"><u>login</u></span></Link> in {loginRedirectTimer})
+          </p>
+        </div>
+      }
+
       
     </div>
   );
