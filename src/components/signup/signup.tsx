@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 import "./signupStyles.css"
-// import {RootState} from '../../reducers'
-// import {useDispatch, useSelector} from 'react-redux'
+import {RootState} from '../../reducers'
+import {useSelector} from 'react-redux'
 // import {isMentorSignup} from '../../actions/IsMentorSignupActions'
 import MentorSignup from '../mentorSignup/mentorSignup';
 
 function Signup() {
-  // const isMentorSignupState = useSelector((state: RootState) => state.isMentorSignup)
-  // const dispatch = useDispatch()
+  const signupScheduleState = useSelector((state: RootState) => state.signupSchedule)
   const [isMentorSignupState, setIsMentorSignupState] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [domain, setDomain] = useState('');
-  const [schedule, setSchedule] = useState({});
 
   return (
     <div className="signup-container">
@@ -48,9 +46,9 @@ function Signup() {
             <input type="checkbox" className="is-mentor-checkbox" onChange={() => isMentorSignupState?setIsMentorSignupState(false):setIsMentorSignupState(true)}></input>
             <label>Become a mentor ?</label>
           </div>
-          {isMentorSignupState?<MentorSignup domain="" setDomain={setDomain} setSchedule={setSchedule} />: <div></div>}
+          {isMentorSignupState?<MentorSignup setDomain={setDomain} />: <div></div>}
 
-          <button type="button" className="signup-button" onClick={() => console.log(domain)}>Sign up</button>
+          <button type="button" className="signup-button" onClick={() => console.log(signupScheduleState)}>Sign up</button>
       </form>
       
     </div>

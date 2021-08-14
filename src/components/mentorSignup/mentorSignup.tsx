@@ -3,13 +3,11 @@ import './mentorSignupStyles.css'
 import AvailabilitySchedule from '../availabilitySchedule/availabilitySchedule';
 
 interface mentorSignupPropsModel{
-  domain: string, 
   setDomain: Function,
-  setSchedule: Function
 }
 
 function MentorSignup(props:mentorSignupPropsModel) {
-  const {setDomain, setSchedule} = props
+  const {setDomain} = props
   return (
     <div className="mentor-signup-container">
         <div className="domain-select-container">
@@ -24,7 +22,7 @@ function MentorSignup(props:mentorSignupPropsModel) {
         </div>
         <div>
             <h4 className="availability-schedule-signup-header">Tell us about your availability to take calls</h4>
-            <AvailabilitySchedule setSchedule={setSchedule} />
+            <AvailabilitySchedule />
         </div>
     </div>
   );
