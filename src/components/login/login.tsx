@@ -30,11 +30,11 @@ function Login() {
 
     if(loginResponse.status === 200){
       if(!isLoggedInState){
-        dispatch(IsLoggedInAction())
+        await dispatch(IsLoggedInAction())
       }
       let jwtToken = await loginResponse.json()
       let token:String = jwtToken["token"]
-      dispatch(setJwtTokenAction(token))
+      await dispatch(setJwtTokenAction(token))
       history.push("/profile")
 
     }else{

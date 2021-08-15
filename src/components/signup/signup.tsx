@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import "./signupStyles.css"
 import {RootState} from '../../reducers'
 import {useSelector} from 'react-redux'
 // import {isMentorSignup} from '../../actions/IsMentorSignupActions'
 import MentorSignup from '../mentorSignup/mentorSignup';
-import { Link, useHistory } from 'react-router-dom';
+import LoginRedirect from '../loginRedirect/loginRedirect';
 
 function Signup() {
-  const history = useHistory();
-
   const signupScheduleState: any = useSelector((state: RootState) => state.signupSchedule)
   const [isMentorSignupState, setIsMentorSignupState] = useState(false);
   const [name, setName] = useState('');
@@ -17,20 +15,7 @@ function Signup() {
   const [domain, setDomain] = useState('');
 
   const [signupStatus, setSignupStatus] = useState(false);
-  const [loginRedirectTimer, setLoginRedirectTimer] = useState(-1);
 
-  useEffect(() => {
-    setInterval(function(){
-      let remainingLoginRedirectTimer:number = loginRedirectTimer-1;
-      if(remainingLoginRedirectTimer === 0){
-        history.push("/login")
-      }
-      else if(remainingLoginRedirectTimer>0){
-        setLoginRedirectTimer(remainingLoginRedirectTimer)
-      }
-    },1000)
-    return function cleanup() {}
-  }, [loginRedirectTimer])
 
   async function sendSignupRequest(){
    let signupScheduleRequestFormat:any = [] 
@@ -65,7 +50,6 @@ function Signup() {
 
     if(signupResponse.status === 200){
       setSignupStatus(true)
-      setLoginRedirectTimer(4);
     }
   } 
 
@@ -110,12 +94,7 @@ function Signup() {
 
       :
 
-        <div className="signup-success-div">
-          <h2>Congratulations! Your account has been created successfully.</h2>
-          <p className="signup-success-redirection-msg">
-            (You will redirected to <Link to="/login"><span className="signup-success-login-link"><u>login</u></span></Link> in {loginRedirectTimer})
-          </p>
-        </div>
+        <LoginRedirect />
       }
 
       
