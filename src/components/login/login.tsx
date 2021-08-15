@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './loginStyles.css'
 
 import {useDispatch, useSelector} from 'react-redux'
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {RootState} from '../../reducers'
 import {login as IsLoggedInAction} from '../../actions/LoginActions'
 import {setJwtToken as setJwtTokenAction} from '../../actions/jwtTokenActions'
@@ -48,6 +48,7 @@ function Login() {
       <form className="login-form-container">
           <input className="login-input" value={email} placeholder="Email address" onChange={(e) => setEmail(e.target.value)}></input>
           <input type="password" value={password} className="login-input" placeholder="Password" onChange={(e) => setPassword(e.target.value)}></input>
+          <p className="signup-login-redirect-msg">New to RAV? <Link to="/signup"><span className="signup-login-link"><u>Signup</u></span></Link> instead</p>
           <button type="button" className="login-button" onClick={() => handleSubmit()}>Log in</button>
       </form>
       

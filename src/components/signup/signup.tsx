@@ -5,6 +5,7 @@ import {useSelector} from 'react-redux'
 // import {isMentorSignup} from '../../actions/IsMentorSignupActions'
 import MentorSignup from '../mentorSignup/mentorSignup';
 import LoginRedirect from '../loginRedirect/loginRedirect';
+import {Link} from 'react-router-dom'
 
 function Signup() {
   const signupScheduleState: any = useSelector((state: RootState) => state.signupSchedule)
@@ -89,6 +90,7 @@ function Signup() {
           </div>
           {isMentorSignupState?<MentorSignup setDomain={setDomain} />: <div></div>}
 
+          <p className="signup-login-redirect-msg">Already a member? <Link to="/login"><span className="signup-login-link"><u>Login</u></span></Link> instead</p>
           <button type="button" className="signup-button" onClick={() => sendSignupRequest()}>Sign up</button>
         </form>
 
