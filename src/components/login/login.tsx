@@ -46,8 +46,8 @@ function Login() {
     <div className="login-container">
       <h1 className="login-header">Log in to your account</h1>
       <form className="login-form-container">
-          <input className="login-input" value={email} placeholder="Email address" onChange={(e) => setEmail(e.target.value)}></input>
-          <input type="password" value={password} className="login-input" placeholder="Password" onChange={(e) => setPassword(e.target.value)}></input>
+          <input className="login-input" required value={email} placeholder="Email address" onChange={(e) => setEmail(e.target.value)}></input>
+          <input type="password" required value={password} className="login-input" placeholder="Password" onChange={(e) => setPassword(e.target.value)}></input>
           <p className="signup-login-redirect-msg">New to RAV? <Link to="/signup"><span className="signup-login-link"><u>Signup</u></span></Link> instead</p>
           <button type="button" className="login-button" onClick={() => handleSubmit()}>Log in</button>
       </form>

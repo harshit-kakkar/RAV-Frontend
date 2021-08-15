@@ -88,3 +88,25 @@
 .disable-pointer{
     pointer-events: none;
 }
+
+.schedule-call-button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 20%;
+}
+
+.schedule-call-button{
+    background-color: #0057D2;
+    color: white;
+    font-size: 1em;
+    height: 25%;
+    border-radius: 0.5em;
+    padding: 0.7em;
+}
+
+.schedule-call-button:focus{
+    outline: none;
+    box-shadow: 0 0 0.05em 0.07em #0057D2;
+}

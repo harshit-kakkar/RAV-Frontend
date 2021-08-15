@@ -6,6 +6,7 @@ import AvailabilitySchedule from '../availabilitySchedule/availabilitySchedule';
 import { RootState } from '../../reducers';
 import {useSelector} from 'react-redux'
 import { useHistory } from 'react-router-dom';
+import CallScheduler from '../callScheduler/callScheduler';
 
 interface scheduleModel{
     "id": string,
@@ -38,6 +39,7 @@ function Profile(props: any) {
     const [name, setName] = useState('');
     const [domain, setDomain] = useState('');
     const [schedule, setSchedule] = useState({});
+    const [viewScheduler, setViewScheduler] = useState(false);
 
     useEffect(() => {
         let endpoint: string = 'profile'
@@ -105,6 +107,13 @@ function Profile(props: any) {
 
 
   return (
+      <>
+    { viewScheduler ?
+
+        <CallScheduler userName={name} schedule={schedule} /> 
+
+        :
+
     <div className="profile-container">
 
 
@@ -117,6 +126,11 @@ function Profile(props: any) {
                   <div className="profile-name">{name}</div>
                   <div className="profile-email">{email}</div>
               </div>
+              {isOwnProfile?<></>:
+                <div className="schedule-call-button-container">
+                    <button className="schedule-call-button" onClick={() => setViewScheduler(true)}>Schedule a call</button>
+                </div>
+                }
           </div>
           <div className="intro-details-container">
               <div className="intro-container">
@@ -154,6 +168,10 @@ function Profile(props: any) {
         }
 
     </div>
+
+    }
+
+    </>
   );
 }
 

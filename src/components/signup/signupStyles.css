@@ -29,6 +29,11 @@
     padding: 1em;
 }
 
+.signup-input:focus, .signup-button:focus{
+    outline: none;
+    box-shadow: 0 0 0.05em 0.07em #0057D2;
+}
+
 
 .signup-button{
     background-color: #0057D2;

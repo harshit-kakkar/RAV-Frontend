@@ -29,6 +29,10 @@
     padding: 1em;
 }
 
+.login-input:focus, .login-button:focus{
+    outline: none;
+    box-shadow: 0 0 0.05em 0.07em #0057D2;
+}
 
 .login-button{
     background-color: #0057D2;
