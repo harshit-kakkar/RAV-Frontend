@@ -12,9 +12,15 @@ interface profileCardModel{
 function SearchProfileCard(props:profileCardModel) {
 
     const {id, name, domain} = props
-    let profileURL = "/profile/" + id
+    let profileURL = "/user/" + id
   return (
-    <Link to={profileURL}>
+    <Link to={{
+        pathname:profileURL,
+        state: { 
+            isOwnProfile: false,
+            id: id
+          }
+        }}>
     <div className="profile-card-container">
         <div className="profile-card-base-details-container">
             <div className="profile-card-picture">

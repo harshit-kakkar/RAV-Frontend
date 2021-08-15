@@ -21,19 +21,30 @@ interface jobDetailModel{
     end_date: string
 }
 
-function Profile() {
+function Profile(props: any) {
 
     const history = useHistory();
 
     const jwtToken = useSelector((state: RootState) => state.jwtToken)
 
+    let isOwnProfile = true
+    let id: string = '';
+    if(props.location.state){
+        isOwnProfile = props.location.state.isOwnProfile
+        id = props.location.state.id
+
+    }
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [domain, setDomain] = useState('');
     const [schedule, setSchedule] = useState({});
 
     useEffect(() => {
-        fetch('http://localhost:8080/profile', {
+        let endpoint: string = 'profile'
+        if(!isOwnProfile){
+            endpoint='user/?id=' + id
+        }
+        fetch('http://localhost:8080/'+endpoint, {
             headers: {
                 'Authorization': 'Bearer ' + jwtToken,
               }

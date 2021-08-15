@@ -14,8 +14,9 @@ function MainSection() {
           TODO: Should be changed to homepage when that component is created */}
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
-          <Route path="/profile" component={Profile} />
+          <Route path="/profile" key="own-profile" component={Profile} />
           <Route path="/search" component={SearchMentor} />
+          <Route path="/user/:id" key="user" render={(props) => <Profile {...props} />} />
           <Route render={() => <Redirect to={{pathname: "/signup"}} />} />
         </Switch>
       </div>
