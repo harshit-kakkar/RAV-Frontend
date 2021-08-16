@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import ScheduleSelector from "../scheduleSelector/scheduleSelector";
 import './callScheduler.css'
 
 
 function CallScheduler(props:any){
     const {userName, schedule} = props
+
+    const [activeDateItem, setActiveDateItem] = useState(0)
 
 
     function dateSelectorComp() {
@@ -14,8 +16,12 @@ function CallScheduler(props:any){
             requiredDate.setDate(requiredDate.getDate() + 1)
             let month = requiredDate.toLocaleString('default', {month: 'short'});
             let day = requiredDate.toLocaleString('default', {weekday: 'short'});
+            let isAvailable = false;
+            if(day.toUpperCase() in schedule){
+                isAvailable = true;
+            }
             let data: string = requiredDate.getDate() + " " + month + ", " + day;
-            dateSelectorList.push(<ScheduleSelector content={data} />)
+            dateSelectorList.push(<ScheduleSelector idx={i} content={data} setActiveItem={setActiveDateItem} activeItem={activeDateItem} isAvailable={isAvailable}/> )
         }
         return dateSelectorList
     }
@@ -27,7 +33,17 @@ function CallScheduler(props:any){
                 <div className="scheduler-select-date">
                     {dateSelectorComp()}
                 </div>
-                <div className="scheduler-select-time">x</div>
+                <div className="scheduler-select-time">
+                    {activeDateItem === 0 ? 
+                        
+                        <></>
+                        : 
+                        <div>
+                            
+                        </div>
+                
+                }
+                </div>
             </div>
         </div>
     )

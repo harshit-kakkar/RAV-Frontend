@@ -4,4 +4,16 @@
     margin: 1.5em;
     width: 7em;
     border-radius: 0.25em;
+    cursor: pointer;
+}
+
+
+.selected-schedule{
+    background-color: #0057D2;
+    color: white;
+}
+
+.inactive-item-selector{
+    background-color: rgb(179, 179, 179);
+    color: rgb(82, 81, 81);
 }

@@ -3,10 +3,9 @@ import './scheduleSelector.css'
 
 
 function ScheduleSelector(props:any){
-    const {content} = props
-    const [selectedOption, setSelectedOption] = useState(false)
+    const {idx, content, setActiveItem, activeItem, isAvailable} = props
     return (
-        <div className={selectedOption?"schedule-selector-container selected-schedule": "schedule-selector-container"} onClick={() => setSelectedOption(true)}>
+        <div className={isAvailable?idx === activeItem?"schedule-selector-container selected-schedule": "schedule-selector-container": "schedule-selector-container inactive-item-selector"} onClick={() => {isAvailable?setActiveItem(idx): console.log("Not available")}}>
             {content}
         </div>
     )

@@ -46,7 +46,7 @@ function Profile(props: any) {
         if(!isOwnProfile){
             endpoint='user/?id=' + id
         }
-        fetch('http://localhost:8080/'+endpoint, {
+        fetch('https://rav-mentor.herokuapp.com/'+endpoint, {
             headers: {
                 'Authorization': 'Bearer ' + jwtToken,
               }

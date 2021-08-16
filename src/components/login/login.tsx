@@ -20,7 +20,7 @@ function Login() {
 
   async function handleSubmit(){
     const data = {email, password};
-    let loginResponse = await fetch('http://localhost:8080/login', { 
+    let loginResponse = await fetch('https://rav-mentor.herokuapp.com/login', { 
                       method: 'POST',
                       headers: {
                         'Content-Type': 'application/json',

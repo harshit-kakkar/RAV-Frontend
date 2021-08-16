@@ -41,7 +41,7 @@ function Signup() {
       "schedule": signupScheduleRequestFormat
     }
 
-    let signupResponse = await fetch('http://localhost:8080/signup', { 
+    let signupResponse = await fetch('https://rav-mentor.herokuapp.com/signup', { 
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
