@@ -21,7 +21,7 @@ function SearchMentor() {
     const [searchResult, setSearchResult] = useState([]);
 
     async function searchUsers() {
-        let searchResponse = await fetch('http://localhost:8080/search?domain='+selectedDomain, {
+        let searchResponse = await fetch('https://rav-mentor.herokuapp.com/search?domain='+selectedDomain, {
             headers: {
                 'Authorization': 'Bearer ' + jwtToken,
               }

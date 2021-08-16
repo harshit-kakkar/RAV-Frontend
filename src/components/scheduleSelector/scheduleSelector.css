@@ -1,10 +1,12 @@
 .schedule-selector-container{
     border: 0.1em black solid;
     padding: 1em;
-    margin: 1.5em;
+    margin: 1em;
     width: 7em;
     border-radius: 0.25em;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -14,6 +16,31 @@
 }
 
 .inactive-item-selector{
-    background-color: rgb(179, 179, 179);
-    color: rgb(82, 81, 81);
+    background-color: rgb(199, 199, 199);
+    color: rgb(117, 117, 117);
+}
+
+.schedule-selector-with-button-div{
+    display: flex;
+}
+
+.schedule-selector-confirm-button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm-appointment-button{
+    border: 0.15em #0057D2 solid;
+    padding: 0.8em;
+    margin: 1em;
+    width: 7em;
+    border-radius: 0.25em;
+    background-color: white;
+    font-size: 1em;
+    /* box-shadow: 0 0 0.1em 0.1em #0057D2; */
+}
+
+.confirm-appointment-button:focus{
+    outline: none;
 }

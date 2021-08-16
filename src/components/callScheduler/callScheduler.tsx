@@ -7,7 +7,11 @@ function CallScheduler(props:any){
     const {userName, schedule} = props
 
     const [activeDateItem, setActiveDateItem] = useState(0)
+    const [activeTimeItem, setActiveTimeItem] = useState(-1)
 
+    function confirmAppointment(){
+        console.log(activeDateItem , activeTimeItem)
+    }
 
     function dateSelectorComp() {
         let dateSelectorList: Array<any> = []
@@ -21,9 +25,36 @@ function CallScheduler(props:any){
                 isAvailable = true;
             }
             let data: string = requiredDate.getDate() + " " + month + ", " + day;
-            dateSelectorList.push(<ScheduleSelector idx={i} content={data} setActiveItem={setActiveDateItem} activeItem={activeDateItem} isAvailable={isAvailable}/> )
+            dateSelectorList.push(<ScheduleSelector 
+                                            idx={i} 
+                                            content={data} 
+                                            setActiveItem={setActiveDateItem} 
+                                            activeItem={activeDateItem} 
+                                            isAvailable={isAvailable}
+                                    /> )
         }
         return dateSelectorList
+    }
+
+    function timeSelectorComp() {
+        let timeSelectorList: Array<any> = []
+        let selectedDate = new Date();
+        selectedDate.setDate(selectedDate.getDate() + activeDateItem)
+        let day = selectedDate.toLocaleString('default', {weekday: 'short'}).toUpperCase();
+        let startTime = schedule[day]["startTime"]
+        let endTime = schedule[day]["endTime"]
+        for(let i = startTime; i<endTime; i++){
+            let formattedTimeSlot = i + ":00 - " + (i+1) +":00"
+            timeSelectorList.push(<ScheduleSelector 
+                                        idx={i} 
+                                        content={formattedTimeSlot} 
+                                        setActiveItem={setActiveTimeItem} 
+                                        activeItem={activeTimeItem} 
+                                        isAvailable={true} 
+                                        confirmAppointment={confirmAppointment}
+                                    />)
+        }
+        return timeSelectorList
     }
 
     return (
@@ -31,6 +62,7 @@ function CallScheduler(props:any){
             <div className="call-with-intro"> Schedule call with {userName}</div>
             <div className="scheduler-select-date-time-container">
                 <div className="scheduler-select-date">
+                    <p className="select-date-heading">Select date</p>
                     {dateSelectorComp()}
                 </div>
                 <div className="scheduler-select-time">
@@ -39,10 +71,10 @@ function CallScheduler(props:any){
                         <></>
                         : 
                         <div>
-                            
+                            <p className="select-time-heading">Select time slot</p>
+                            {timeSelectorComp()}
                         </div>
-                
-                }
+                    }
                 </div>
             </div>
         </div>

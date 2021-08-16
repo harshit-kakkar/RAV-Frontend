@@ -17,3 +17,14 @@
     justify-content: space-around;
     width: 80%;
 }
+
+.select-date-heading,
+.select-time-heading{
+    margin: 1.5em;
+    font-weight: 550;
+    font-size: 1.1em;
+}
+
+.scheduler-select-time{
+    width: 50%;
+}
