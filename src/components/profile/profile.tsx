@@ -110,7 +110,7 @@ function Profile(props: any) {
       <>
     { viewScheduler ?
 
-        <CallScheduler userName={name} schedule={schedule} /> 
+        <CallScheduler id={id} userName={name} schedule={schedule} /> 
 
         :
 
