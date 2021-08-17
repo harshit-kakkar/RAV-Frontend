@@ -5,6 +5,7 @@ import Signup from '../signup/signup';
 import Login from '../login/login';
 import Profile from '../profile/profile';
 import SearchMentor from '../searchMentor/searchMentor';
+import Appointments from '../appointments/appointments';
 
 function MainSection() {
   return (
@@ -17,6 +18,7 @@ function MainSection() {
           <Route path="/profile" key="own-profile" component={Profile} />
           <Route path="/search" component={SearchMentor} />
           <Route path="/user/:id" key="user" render={(props) => <Profile {...props} />} />
+          <Route path="/appointments" component={Appointments} />
           <Route render={() => <Redirect to={{pathname: "/signup"}} />} />
         </Switch>
       </div>

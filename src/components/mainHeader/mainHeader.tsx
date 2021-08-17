@@ -16,7 +16,7 @@ function MainHeader() {
         isLoggedIn? 
           <nav className="main-navigation-container">
             <ul className="main-navigation-list">
-              <li>Events</li>
+              <Link to="/appointments"> <li>Appointments</li> </Link>
               <Link to="/search"><li>Search</li></Link>
               <Link to='/profile'><li>Profile</li></Link>
             </ul>

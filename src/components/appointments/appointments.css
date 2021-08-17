@@ -1,0 +1,13 @@
+.appointments-list-container{
+    margin-left: 20%;
+    padding-top: 5em;
+    margin-right: 20%;
+}
+
+.appointments-list-heading{
+    margin-top: 0;
+}
+
+.appointment-card-list-container{
+    padding-top: 5em;
+}

@@ -4,6 +4,7 @@ import './callScheduler.css'
 
 import { RootState } from '../../reducers';
 import {useSelector} from 'react-redux'
+import { useHistory } from "react-router-dom";
 
 
 function CallScheduler(props:any){
@@ -13,6 +14,8 @@ function CallScheduler(props:any){
     const [activeTimeItem, setActiveTimeItem] = useState(-1)
 
     const jwtToken = useSelector((state: RootState) => state.jwtToken)
+
+    const history = useHistory();
 
     async function confirmAppointment(){
         // console.log(activeDateItem , activeTimeItem)
@@ -43,7 +46,7 @@ function CallScheduler(props:any){
 
         
         if(setAppointmentRes.status === 201){
-            console.log("success")
+            history.push("/appointments")
         }
         else{
             console.log("Error while setting appointment")
