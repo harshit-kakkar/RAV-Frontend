@@ -18,12 +18,12 @@ function Appointments(){
     const history = useHistory()
 
     const [appointmentsList, setAppointmentList] = useState([]);
-    const [asMentor, setAsMentor] = useState(true)
+    const [asMentor, setAsMentor] = useState("false")
 
     const jwtToken = useSelector((state: RootState) => state.jwtToken)
 
     useEffect(() => {
-        fetch('http://localhost:8080/appointment?asMentor=false', {
+        fetch('http://localhost:8080/appointment?asMentor=' + asMentor, {
             headers: {
                 'Authorization': 'Bearer ' + jwtToken,
               }
@@ -35,7 +35,7 @@ function Appointments(){
                 history.push("/login")
             }
         })
-    }, [])
+    }, [asMentor])
 
     async function changeAppointmentList(appointmentList: any){
         let appointmentListJson= await appointmentList.json();
@@ -54,6 +54,10 @@ function Appointments(){
     return (
         <div className="appointments-list-container">
             <h1 className="appointments-list-heading">Your Appointments</h1>
+            <select className="appointment-list-mentor-mentee-dropdown" onChange={(e) => setAsMentor(e.target.value)} >
+                <option value="false">As Mentee</option>
+                <option value="true">As Mentor</option>
+            </select>
             <div className="appointment-card-list-container">
                 {appointmentsList.length !== 0?
 

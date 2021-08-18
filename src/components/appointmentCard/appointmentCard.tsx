@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './appointmentCardStyles.css'
 
 function AppointmentCard(){
 
     return (
         <div className="appointment-card-container">
-            <div>
-                <p>26 July</p>
-                <p>SUN</p>
+            <div className="appointment-card-date-name-container">
+                <div className="appointment-card-date-day-container">
+                    <p className="appointment-card-date">26 July</p>
+                    <p className="appointment-card-day">SUN</p>
+                </div>
+                <div className="appointment-card-name-container">
+                    <p>with <b>Harshit</b></p>
+                </div>
             </div>
-            <div>
-                <p>with Harshit</p>
-            </div>
-            <div>
+            <div className="appointment-card-amount-paid">
                 Rs 500
             </div>
             

@@ -6,11 +6,11 @@ import { RootState } from '../../reducers';
 import {useSelector} from 'react-redux'
 import {useHistory} from 'react-router-dom'
 
-interface profileCardModel{
-    id:number,
-    name: string,
-    domain: string
-}
+// interface profileCardModel{
+//     id:number,
+//     name: string,
+//     domain: string
+// }
 
 function SearchMentor() {
     const history = useHistory();

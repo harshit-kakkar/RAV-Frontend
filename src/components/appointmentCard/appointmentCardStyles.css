@@ -1,7 +1,34 @@
 .appointment-card-container{
     /* border: 1px black solid; */
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     margin: 1em;
     box-shadow: rgb(131, 131, 131) 1px 1px 4px 1px;
+    font-size: 1.3em;
+    font-family:sans-serif;
+}
+
+.appointment-card-date-name-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.appointment-card-date-day-container{
+    /* margin: 1em; */
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+.appointment-card-amount-paid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2em;
+    margin-right: 4em;
+}
+
+.appointment-card-name-container{
+    margin: 1em;
+    margin-left: 2em;
 }
