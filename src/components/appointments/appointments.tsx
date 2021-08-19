@@ -11,6 +11,7 @@ interface AppointmentModel{
     "appointmentDate": string,
     "appointmentStartTime": number,
     "location": string
+    "name": string
 }
 
 function Appointments(){
@@ -23,7 +24,7 @@ function Appointments(){
     const jwtToken = useSelector((state: RootState) => state.jwtToken)
 
     useEffect(() => {
-        fetch('http://localhost:8080/appointment?asMentor=' + asMentor, {
+        fetch('https://rav-mentor.herokuapp.com/appointment?asMentor=' + asMentor, {
             headers: {
                 'Authorization': 'Bearer ' + jwtToken,
               }
@@ -46,7 +47,10 @@ function Appointments(){
     function getAppointmentCardList(){
         let appointmentCards: any = []
         appointmentsList.map((appointment: AppointmentModel) => {
-            appointmentCards.push(<AppointmentCard key={appointment.id} />)
+            let date = appointment.appointmentDate;
+            let dateObj = new Date(date);
+            let day: string = dateObj.toLocaleString('default', {weekday: 'short'}).toUpperCase();
+            appointmentCards.push(<AppointmentCard key={appointment.id} name={appointment.name} date={date} day={day} />)
         })
         return appointmentCards
     }
